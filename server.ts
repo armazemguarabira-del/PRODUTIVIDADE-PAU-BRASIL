@@ -500,22 +500,30 @@ app.post('/api/photos/prune', async (req, res) => {
   }
 });
 
+const FIREBASE_APPLET_CONFIG_PATH = path.join(process.cwd(), 'firebase-applet-config.json');
+
 // 8. FIREBASE CONNECTION STATUS API
 app.get('/api/firebase/status', async (req, res) => {
   try {
-    const customExists = existsSync(FIREBASE_CONFIG_PATH);
     let config = {
-      apiKey: "AIzaSyB1ZyrUc3yDbiM1MuFqeyOCUoK5cT8xGP8",
-      authDomain: "bionic-petal-fwx5p.firebaseapp.com",
-      projectId: "bionic-petal-fwx5p",
-      storageBucket: "bionic-petal-fwx5p.firebasestorage.app",
-      messagingSenderId: "146217191211",
-      appId: "1:146217191211:web:0ff41d060dcb835f8ee76e",
+      apiKey: "AIzaSyAOVHg58KWp798onwm4Elx4gB_SCQDeJFo",
+      authDomain: "gen-lang-client-0624437496.firebaseapp.com",
+      projectId: "gen-lang-client-0624437496",
+      storageBucket: "gen-lang-client-0624437496.firebasestorage.app",
+      messagingSenderId: "701304893920",
+      appId: "1:701304893920:web:6c8b495653137d60357b85",
       measurementId: "",
-      firestoreDatabaseId: "ai-studio-remixremixcopyof-f0cb713b-ad8c-4b0e-9cd3-4cca19956cc4"
+      firestoreDatabaseId: "ai-studio-remixremixremixc-f2ec6360-c11a-4fc1-96f6-cc45bef2db0e"
     };
 
-    if (customExists) {
+    if (existsSync(FIREBASE_APPLET_CONFIG_PATH)) {
+      try {
+        const appletData = await fs.readFile(FIREBASE_APPLET_CONFIG_PATH, 'utf-8');
+        config = { ...config, ...JSON.parse(appletData) };
+      } catch (e) {}
+    }
+
+    if (existsSync(FIREBASE_CONFIG_PATH)) {
       try {
         const customData = await fs.readFile(FIREBASE_CONFIG_PATH, 'utf-8');
         config = { ...config, ...JSON.parse(customData) };
@@ -552,19 +560,25 @@ app.get('/api/firebase/status', async (req, res) => {
 // 9. GET FIREBASE CONFIG
 app.get('/api/firebase/config', async (req, res) => {
   try {
-    const customExists = existsSync(FIREBASE_CONFIG_PATH);
     let config = {
-      apiKey: "AIzaSyB1ZyrUc3yDbiM1MuFqeyOCUoK5cT8xGP8",
-      authDomain: "bionic-petal-fwx5p.firebaseapp.com",
-      projectId: "bionic-petal-fwx5p",
-      storageBucket: "bionic-petal-fwx5p.firebasestorage.app",
-      messagingSenderId: "146217191211",
-      appId: "1:146217191211:web:0ff41d060dcb835f8ee76e",
+      apiKey: "AIzaSyAOVHg58KWp798onwm4Elx4gB_SCQDeJFo",
+      authDomain: "gen-lang-client-0624437496.firebaseapp.com",
+      projectId: "gen-lang-client-0624437496",
+      storageBucket: "gen-lang-client-0624437496.firebasestorage.app",
+      messagingSenderId: "701304893920",
+      appId: "1:701304893920:web:6c8b495653137d60357b85",
       measurementId: "",
-      firestoreDatabaseId: "ai-studio-remixremixcopyof-f0cb713b-ad8c-4b0e-9cd3-4cca19956cc4"
+      firestoreDatabaseId: "ai-studio-remixremixremixc-f2ec6360-c11a-4fc1-96f6-cc45bef2db0e"
     };
 
-    if (customExists) {
+    if (existsSync(FIREBASE_APPLET_CONFIG_PATH)) {
+      try {
+        const appletData = await fs.readFile(FIREBASE_APPLET_CONFIG_PATH, 'utf-8');
+        config = { ...config, ...JSON.parse(appletData) };
+      } catch (e) {}
+    }
+
+    if (existsSync(FIREBASE_CONFIG_PATH)) {
       try {
         const customData = await fs.readFile(FIREBASE_CONFIG_PATH, 'utf-8');
         config = { ...config, ...JSON.parse(customData) };

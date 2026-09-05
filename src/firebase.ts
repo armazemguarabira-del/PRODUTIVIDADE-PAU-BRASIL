@@ -49,14 +49,14 @@ interface FirebaseConfigExtended {
 const metaEnv = typeof import.meta !== 'undefined' ? (import.meta as any).env : undefined;
 
 const DEFAULT_CONFIG: FirebaseConfigExtended = {
-  apiKey: metaEnv?.VITE_FIREBASE_API_KEY || (appletConfig as any)?.apiKey || "AIzaSyB1ZyrUc3yDbiM1MuFqeyOCUoK5cT8xGP8",
-  authDomain: metaEnv?.VITE_FIREBASE_AUTH_DOMAIN || (appletConfig as any)?.authDomain || "bionic-petal-fwx5p.firebaseapp.com",
-  projectId: metaEnv?.VITE_FIREBASE_PROJECT_ID || (appletConfig as any)?.projectId || "bionic-petal-fwx5p",
-  storageBucket: metaEnv?.VITE_FIREBASE_STORAGE_BUCKET || (appletConfig as any)?.storageBucket || "bionic-petal-fwx5p.firebasestorage.app",
-  messagingSenderId: metaEnv?.VITE_FIREBASE_MESSAGING_SENDER_ID || (appletConfig as any)?.messagingSenderId || "146217191211",
-  appId: metaEnv?.VITE_FIREBASE_APP_ID || (appletConfig as any)?.appId || "1:146217191211:web:0ff41d060dcb835f8ee76e",
-  measurementId: metaEnv?.VITE_FIREBASE_MEASUREMENT_ID || (appletConfig as any)?.measurementId || undefined,
-  firestoreDatabaseId: metaEnv?.VITE_FIREBASE_DATABASE_ID || (appletConfig as any)?.firestoreDatabaseId || "ai-studio-remixremixcopyof-f0cb713b-ad8c-4b0e-9cd3-4cca19956cc4"
+  apiKey: (appletConfig as any)?.apiKey || metaEnv?.VITE_FIREBASE_API_KEY || "AIzaSyAOVHg58KWp798onwm4Elx4gB_SCQDeJFo",
+  authDomain: (appletConfig as any)?.authDomain || metaEnv?.VITE_FIREBASE_AUTH_DOMAIN || "gen-lang-client-0624437496.firebaseapp.com",
+  projectId: (appletConfig as any)?.projectId || metaEnv?.VITE_FIREBASE_PROJECT_ID || "gen-lang-client-0624437496",
+  storageBucket: (appletConfig as any)?.storageBucket || metaEnv?.VITE_FIREBASE_STORAGE_BUCKET || "gen-lang-client-0624437496.firebasestorage.app",
+  messagingSenderId: (appletConfig as any)?.messagingSenderId || metaEnv?.VITE_FIREBASE_MESSAGING_SENDER_ID || "701304893920",
+  appId: (appletConfig as any)?.appId || metaEnv?.VITE_FIREBASE_APP_ID || "1:701304893920:web:6c8b495653137d60357b85",
+  measurementId: (appletConfig as any)?.measurementId || metaEnv?.VITE_FIREBASE_MEASUREMENT_ID || undefined,
+  firestoreDatabaseId: (appletConfig as any)?.firestoreDatabaseId || metaEnv?.VITE_FIREBASE_DATABASE_ID || "ai-studio-remixremixremixc-f2ec6360-c11a-4fc1-96f6-cc45bef2db0e"
 };
 
 // Check if there is a custom configuration saved in localStorage
@@ -68,7 +68,7 @@ if (typeof window !== 'undefined') {
     const savedConfigStr = window.localStorage ? window.localStorage.getItem('custom_firebase_config') : null;
     if (savedConfigStr) {
       const parsed = JSON.parse(savedConfigStr);
-      if (parsed && (parsed.projectId === 'armazemfacil-b2292' || parsed.projectId === 'armazemrelatorios')) {
+      if (parsed && (parsed.projectId === 'armazemfacil-b2292' || parsed.projectId === 'armazemrelatorios' || parsed.projectId === 'bionic-petal-fwx5p')) {
         // Automatically clear stale cache pointing to old project
         window.localStorage.removeItem('custom_firebase_config');
       } else if (parsed && parsed.apiKey && parsed.projectId) {
